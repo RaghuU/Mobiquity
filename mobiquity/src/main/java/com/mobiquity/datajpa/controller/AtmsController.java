@@ -26,7 +26,6 @@ public class AtmsController {
 	public ResponseEntity<List<Atms>> getAllEmployees(@RequestParam(required = false) String city) {
 		try {
 			List<Atms> atmsdata = new ArrayList<Atms>();
-
 			if (city == null)
 				atmsService.findAll().forEach(atmsdata::add);
 			else
@@ -35,7 +34,6 @@ public class AtmsController {
 			if (atmsdata.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 			}
-
 			return new ResponseEntity<>(atmsdata, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
